@@ -3,10 +3,8 @@ from database import FormDatabase
 def initialize_database():
     db = FormDatabase()
     
-    # Очищаем существующие данные (новый способ)
-    db.db.drop_tables()  # Удаляем все таблицы
-    
-    # Добавляем тестовые шаблоны форм
+    db.db.drop_tables()  
+
     db.add_template({
         "name": "Форма пользователя",
         "email": "email",
