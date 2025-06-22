@@ -6,8 +6,13 @@ def validate_email(value):
     return bool(re.fullmatch(pattern, value))
 
 def validate_phone(value):
-    pattern = r'^\+7 \d{3} \d{3} \d{2} \d{2}$'
-    return bool(re.fullmatch(pattern, value))
+    if re.fullmatch(r'^\+7 \d{3} \d{3} \d{2} \d{2}$', value):
+        return True
+    if re.fullmatch(r'^\+7\d{10}$', value):
+        return True
+    if re.fullmatch(r'^\+7[\(\s-]?\d{3}[\)\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$', value):
+        return True
+    return False
 
 def validate_date(value):
     for fmt in ('%d.%m.%Y', '%Y-%m-%d'):
